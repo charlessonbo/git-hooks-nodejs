@@ -7,12 +7,13 @@
     "test": "jest",
     "lint": "eslint src/**",
     "lint-fix": "eslint src/** --fix",
-    "success-message": "echo Thanks for commiting $GIT_AUTHOR_NAME"
+    "success-message": "echo Thanks for changing file"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@commitlint/cli": "^16.1.0",
     "eslint": "^8.8.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.25.4",
@@ -27,6 +28,24 @@
     }
   },
   "lint-staged": {
-    "*js": ["eslint", "jest --findRelatedTests"]
+    "*js": [
+      "eslint",
+      "jest --findRelatedTests"
+    ]
+  },
+  "commitlint": {
+    "rules": {
+      "references-empty": [
+        2,
+        "never"
+      ]
+    },
+    "parserPreset": {
+      "parserOpts": {
+        "issuePrefixes": [
+          "ISSUE-"
+        ]
+      }
+    }
   }
 }
